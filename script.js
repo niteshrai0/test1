@@ -23,7 +23,9 @@ document.querySelectorAll('[data-awign-tab]').forEach(btn=>{
 document.querySelectorAll('[data-risk-tab]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const key=btn.dataset.riskTab;
-    document.querySelectorAll('[data-risk-tab]').forEach(b=>b.classList.toggle('active',b===btn));
+    document.querySelectorAll('[data-risk-tab]').forEach(b=>{
+      const on=b===btn;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');
+    });
     document.querySelectorAll('[data-risk-panel]').forEach(p=>p.classList.toggle('active',p.dataset.riskPanel===key));
   });
 });
